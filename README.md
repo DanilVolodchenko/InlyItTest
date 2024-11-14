@@ -58,12 +58,14 @@ DB_PORT=Порт БД
 DB_NAME=Имя БД
 DB_USER=Имя юзера БД
 DB_PASSWORD=Пароль БД
-POSTGRES_PASSWORD=Пароль БД для запуска в контейнере
 
-JWT_SECRET=Ключ для шифрования 
+SECRET_KEY=Ключ для шифрования 
 ALGORITHM=Алгоритм шифрования
 ACCESS_TOKEN_EXPIRE_MINUTES=Количество минут существования 
 токена
+
+LOCAL_SERVER_HOST=Хост локального сервера
+LOCAL_SERVER_PORT=Порт локального сервера
 ```
 
 ### Запуск проекта
@@ -74,12 +76,12 @@ ACCESS_TOKEN_EXPIRE_MINUTES=Количество минут существова
 
 В проекте есть файл `Dockerfile`, где написан код сборки
 docker-образа. Сборка осуществляется командой:
-`docker build -t adhub .`. После этого нужно запустить докер
+`docker build -t inlyid .`. После этого нужно запустить докер
 базы данных, соединить их в сеть, чтобы они могли общаться
 друг с другом и создать `volumes`, чтобы не потерять данные БД.
 
 После успешной сборки образа, можно запустить контейнер:
-`docker run --name adhub-container adhub`. Теперь проект
+`docker run --name adhub-container inlyit`. Теперь проект
 запущен в docker-контейнере.
 
 ## Docker compose
