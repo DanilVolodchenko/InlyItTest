@@ -7,6 +7,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 SEC: TypeAlias = int
 
 class Settings(BaseSettings):
+    # Пробовал разделить на отдельные классы, но наткнулся на проблему, решение пока не нашел: так что пока все в одном
+
     LOCAL_SERVER_HOST: str
     LOCAL_SERVER_PORT: int
 

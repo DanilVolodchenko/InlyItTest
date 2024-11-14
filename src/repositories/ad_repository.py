@@ -2,7 +2,7 @@ from typing import Optional
 
 from sqlalchemy.orm import joinedload
 
-from .interfaces import RepositoryInterface, T
+from .interfaces import RepositoryInterface
 from ..models.db.ad import Ad
 from ..models.dto.ad import CreateAd
 

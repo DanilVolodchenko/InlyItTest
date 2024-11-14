@@ -1,33 +1,30 @@
-from src.models.dto.user import BaseUser
-
-
-class BaseException(Exception):
+class BaseInlyItException(Exception):
     pass
 
 
-class UserNotAuthenticated(BaseException):
+class UserNotAuthenticated(BaseInlyItException):
     pass
 
 
-class IncorrectToken(BaseException):
+class IncorrectToken(BaseInlyItException):
     pass
 
 
-class UserNotFound(BaseException):
+class UserNotFound(BaseInlyItException):
     pass
 
 
-class UserFound(BaseException):
+class UserFound(BaseInlyItException):
     pass
 
 
-class PermissionDenied(BaseException):
+class PermissionDenied(BaseInlyItException):
     pass
 
 
-class AdNotFound(BaseException):
+class AdNotFound(BaseInlyItException):
     pass
 
 
-class CommentNotFound(BaseException):
+class CommentNotFound(BaseInlyItException):
     pass

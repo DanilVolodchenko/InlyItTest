@@ -1,4 +1,3 @@
-from ..exceptions import PermissionDenied
 from ..models.dto.ad import CreateAd
 from ..models.dto.common import AdDTO, UserDTO
 from ..services import UserService, AdService

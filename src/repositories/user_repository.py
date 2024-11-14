@@ -1,4 +1,4 @@
-from .interfaces import RepositoryInterface, T
+from .interfaces import RepositoryInterface
 from ..models.db.user import User
 
 __all__ = ['UserRepository']
