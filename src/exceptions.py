@@ -10,6 +10,10 @@ class IncorrectToken(BaseInlyItException):
     pass
 
 
+class IncorrectPassword(BaseInlyItException):
+    pass
+
+
 class UserNotFound(BaseInlyItException):
     pass
 

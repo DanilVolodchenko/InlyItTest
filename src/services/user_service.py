@@ -11,7 +11,7 @@ from ..repositories.user_repository import UserRepository
 from ..models.dto.common import UserDTO
 from ..models.dto.roles import Roles
 from ..models.dto.security import CreateToken, Token
-from ..exceptions import UserNotFound, UserFound, IncorrectToken
+from ..exceptions import UserNotFound, UserFound, IncorrectPassword
 from ..security import get_password_hash, get_decoded_jwt_token, verify_password, create_access_token, access_token
 
 __all__ = ['UserService']
@@ -77,7 +77,7 @@ class UserService(ServiceInterface[UserRepository]):
             raise UserNotFound(f'Пользователь не найден')
 
         if not verify_password(user.password, db_user.hashed_password):
-            raise IncorrectToken('Неверный токен пользователя')
+            raise IncorrectPassword('Неверный логин или пароль пользователя')
 
         return create_access_token(CreateToken(username=db_user.username, role=db_user.role))
 
