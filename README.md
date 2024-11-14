@@ -21,7 +21,7 @@
 
 Клонируем репозиторий:
 
-`git clone git@github.com:DanilVolodchenko/AdHub.git`
+`git clone git@github.com:DanilVolodchenko/InlyItTest.git`
 
 ### Создание виртуального окружения
 
@@ -38,10 +38,10 @@
 ### База данных
 
 Проект работает на базе данных PostgreSQL@13. Устанавливаем
-его `brew install postgresql@13`, затем поднимает базу
-`brew services start postgresql@13`, скачиваем pdAdmin для
+его `brew install postgresql@15`, затем поднимает базу
+`brew services start postgresql@15`, скачиваем pdAdmin для
 работы с базой данных `brew install pgadmin4`. Заходим в
-pgAdmin и создаем потключение серверу, как это сделать можно
+pgAdmin и создаем подключение серверу, как это сделать можно
 посмотреть [тут](https://fkn.ktu10.com/?q=node/9446).
 
 Создаем таблицы в БД: `alembic upgrade head`
@@ -76,7 +76,7 @@ LOCAL_SERVER_PORT=Порт локального сервера
 
 В проекте есть файл `Dockerfile`, где написан код сборки
 docker-образа. Сборка осуществляется командой:
-`docker build -t inlyid .`. После этого нужно запустить докер
+`docker build -t inlyit .`. После этого нужно запустить докер
 базы данных, соединить их в сеть, чтобы они могли общаться
 друг с другом и создать `volumes`, чтобы не потерять данные БД.
 
