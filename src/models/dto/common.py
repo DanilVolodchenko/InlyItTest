@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 from .roles import Roles
 
@@ -10,7 +10,7 @@ class UserDTO(BaseModel):
 
     id: int
     username: str
-    email: str
+    email: EmailStr
     role: Roles = Roles.user
 
 
