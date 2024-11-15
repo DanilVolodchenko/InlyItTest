@@ -20,19 +20,6 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=False)
 session_maker = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
-@contextmanager
-def SessionCtx() -> Generator[Session, None, None]:
-    session = session_maker()
-    try:
-        yield session
-        session.commit()
-    except Exception:
-        session.rollback()
-        raise
-    finally:
-        session.close()
-
-
 def session() -> Generator[Session, None, None]:
     session = session_maker()
     try:
