@@ -1,5 +1,4 @@
 from typing import Generator
-from contextlib import contextmanager
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
@@ -17,11 +16,11 @@ SQLALCHEMY_DATABASE_URL = (
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=False)
 
-session_maker = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+SessionMaker = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 
 def session() -> Generator[Session, None, None]:
-    session = session_maker()
+    session = SessionMaker()
     try:
         yield session
         session.commit()

@@ -1,12 +1,11 @@
 from typing import Type, Annotated
 
 from fastapi import Depends
-from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .interfaces import ServiceInterface
 from ..models.db import User
-from ..models import engine, session_maker
+from ..models import SessionMaker
 from ..models.dto.user import CreateUser, UpdateUser, LoginUser
 from ..repositories.user_repository import UserRepository
 from ..models.dto.common import UserDTO
@@ -63,7 +62,7 @@ class UserService(ServiceInterface[UserRepository]):
     @staticmethod
     def get_current_user(token: Annotated[str, Depends(access_token)]) -> UserDTO:
 
-        with session_maker() as session:
+        with SessionMaker() as session:
             decoded_jwt = get_decoded_jwt_token(token)
             user = UserService(session).get_user_by_username(decoded_jwt.username)
             if not user:
