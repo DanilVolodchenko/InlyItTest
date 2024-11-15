@@ -32,3 +32,7 @@ class AdNotFound(BaseInlyItException):
 
 class CommentNotFound(BaseInlyItException):
     pass
+
+
+class NotAuthenticated(BaseInlyItException):
+    pass

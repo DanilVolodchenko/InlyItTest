@@ -1,12 +1,27 @@
+from typing import Optional
+
+from fastapi import Request, HTTPException
 from fastapi.security import APIKeyCookie
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+from starlette.exceptions import HTTPException
 
 from .models.dto.security import DecodedToken, CreateToken, Token
-from src.config import settings
+from .config import settings
+from .exceptions import NotAuthenticated
+
+
+class APIKeyCookieJWT(APIKeyCookie):
+    # Сделано для того, что если возникнет ошибка, то вызвать свою
+    async def __call__(self, request: Request) -> Optional[str]:
+        try:
+            result = await super().__call__(request)
+        except HTTPException:
+            raise NotAuthenticated('Пользователь не авторизован')
+        return result
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-access_token = APIKeyCookie(name='access_token')
+access_token = APIKeyCookieJWT(name='access_token')
 
 
 def create_access_token(data: CreateToken) -> Token:

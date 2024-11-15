@@ -8,7 +8,7 @@ from .utils import do_migrate
 
 logger.add('log/file_{time:DD-MM-YYYY}.log', retention=7, level='INFO')
 
-__version__ = (0, 0, 0)
+__version__ = (1, 0, 0)
 
 
 def main() -> None:
